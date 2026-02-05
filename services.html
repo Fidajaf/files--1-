@@ -396,26 +396,27 @@
         </div>
 
         <div class="max-w-6xl mx-auto overflow-hidden">
-            <div class="crew-slider-container relative">
+            <div class="crew-slider-container relative px-2">
+                
                 <button class="slider-btn prev" id="crewPrevBtn" aria-label="Previous">
                     <i class="fas fa-chevron-left"></i>
                 </button>
 
-                <div class="crew-slider-wrapper flex transition-transform duration-500 ease-out" id="crewSliderWrapper" style="gap: 24px; align-items: flex-start;">
-                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s1.jpeg" alt="Professional event crew" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
-                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s6.jpeg" alt="Catering staff in action" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
-                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s3.jpeg" alt="Hospitality professionals" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
-                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s4.jpeg" alt="Elite service team" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
-                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s5.jpeg" alt="Uniformed staff members" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
-                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s7.jpeg" alt="Event management crew" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
-                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s2.jpeg" alt="Trained professionals" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
+                <div class="crew-slider-wrapper flex transition-transform duration-500 ease-out" id="crewSliderWrapper" style="gap: 16px; align-items: flex-start;">
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s1.jpeg" alt="Crew 1" class="w-full h-auto rounded-xl shadow-md block object-contain" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s6.jpeg" alt="Crew 2" class="w-full h-auto rounded-xl shadow-md block object-contain" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s3.jpeg" alt="Crew 3" class="w-full h-auto rounded-xl shadow-md block object-contain" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s4.jpeg" alt="Crew 4" class="w-full h-auto rounded-xl shadow-md block object-contain" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s5.jpeg" alt="Crew 5" class="w-full h-auto rounded-xl shadow-md block object-contain" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s7.jpeg" alt="Crew 6" class="w-full h-auto rounded-xl shadow-md block object-contain" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s2.jpeg" alt="Crew 7" class="w-full h-auto rounded-xl shadow-md block object-contain" loading="lazy"></div>
                 </div>
 
                 <button class="slider-btn next" id="crewNextBtn" aria-label="Next">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-            <div class="slider-dots mt-8 flex justify-center gap-2" id="crewDots"></div>
+            <div class="slider-dots mt-10 flex justify-center gap-2" id="crewDots"></div>
         </div>
     </div>
 </section>
@@ -728,31 +729,84 @@
     </div>
 
     <script>
-        document.getElementById('mobileMenuBtn').addEventListener('click', function () {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
+    const crewSlider = document.getElementById('crewSliderWrapper');
+    const crewPrev = document.getElementById('crewPrevBtn');
+    const crewNext = document.getElementById('crewNextBtn');
+    const crewDotsContainer = document.getElementById('crewDots');
+    const crewCards = document.querySelectorAll('.crew-slide');
+    const totalCrewCards = crewCards.length;
+
+    // Mobile: 1.2 cards (shows a peek of the next one) | Desktop: 4 cards
+    let crewCardsPerView = window.innerWidth >= 768 ? 4 : 1.2;
+    let currentCrewIndex = 0;
+    
+    function getMaxIndex() {
+        return Math.max(0, totalCrewCards - Math.floor(crewCardsPerView));
+    }
+
+    function updateCrewSlider() {
+        const gap = 16;
+        const containerWidth = crewSlider.parentElement.offsetWidth;
+        // Logic to calculate card width based on how many we want to see
+        const cardWidth = (containerWidth - (gap * (Math.ceil(crewCardsPerView) - 1))) / crewCardsPerView;
+        
+        crewCards.forEach(card => {
+            card.style.width = `${cardWidth}px`;
         });
-        const crewSlider = document.getElementById('crewSliderWrapper'), crewPrev = document.getElementById('crewPrevBtn'), crewNext = document.getElementById('crewNextBtn'), crewDotsContainer = document.getElementById('crewDots'), crewCards = document.querySelectorAll('.crew-slide'), totalCrewCards = crewCards.length;
-        let crewCardsPerView = window.innerWidth >= 768 ? 4 : 2, currentCrewIndex = 0, maxCrewIndex = Math.max(0, totalCrewCards - crewCardsPerView);
 
-        for (let i = 0; i <= maxCrewIndex; i++) { const dot = document.createElement('div'); dot.classList.add('dot'); if (i === 0) dot.classList.add('active'); dot.addEventListener('click', () => goToCrewSlide(i)); crewDotsContainer.appendChild(dot) }
-        const crewDots = document.querySelectorAll('#crewDots .dot');
+        const offset = -(currentCrewIndex * (cardWidth + gap));
+        crewSlider.style.transform = `translateX(${offset}px)`;
 
-        function updateCrewSlider() { const cardWidth = crewCards[0].offsetWidth, gap = 24, offset = -(currentCrewIndex * (cardWidth + gap)); crewSlider.style.transform = `translateX(${offset}px)`; crewDots.forEach((dot, index) => { dot.classList.toggle('active', index === currentCrewIndex) }); crewPrev.disabled = currentCrewIndex === 0; crewNext.disabled = currentCrewIndex >= maxCrewIndex }
+        // Update active dot
+        const dots = document.querySelectorAll('#crewDots .dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentCrewIndex);
+        });
 
-        function goToCrewSlide(index) { currentCrewIndex = Math.max(0, Math.min(index, maxCrewIndex)); updateCrewSlider() }
+        crewPrev.style.opacity = currentCrewIndex === 0 ? "0.3" : "1";
+        crewNext.style.opacity = currentCrewIndex >= getMaxIndex() ? "0.3" : "1";
+    }
 
-        crewPrev.addEventListener('click', () => { if (currentCrewIndex > 0) { currentCrewIndex--; updateCrewSlider() } });
-        crewNext.addEventListener('click', () => { if (currentCrewIndex < maxCrewIndex) { currentCrewIndex++; updateCrewSlider() } });
+    function initDots() {
+        crewDotsContainer.innerHTML = '';
+        for (let i = 0; i <= getMaxIndex(); i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentCrewIndex = i;
+                updateCrewSlider();
+            });
+            crewDotsContainer.appendChild(dot);
+        }
+    }
 
-        let crewAutoPlay = setInterval(() => { if (currentCrewIndex < maxCrewIndex) { currentCrewIndex++ } else { currentCrewIndex = 0 } updateCrewSlider() }, 3000);
+    crewPrev.addEventListener('click', () => {
+        if (currentCrewIndex > 0) {
+            currentCrewIndex--;
+            updateCrewSlider();
+        }
+    });
 
-        crewSlider.addEventListener('mouseenter', () => { clearInterval(crewAutoPlay) });
-        crewSlider.addEventListener('mouseleave', () => { crewAutoPlay = setInterval(() => { if (currentCrewIndex < maxCrewIndex) { currentCrewIndex++ } else { currentCrewIndex = 0 } updateCrewSlider() }, 3000) });
+    crewNext.addEventListener('click', () => {
+        if (currentCrewIndex < getMaxIndex()) {
+            currentCrewIndex++;
+            updateCrewSlider();
+        }
+    });
 
-        window.addEventListener('resize', () => { const newCardsPerView = window.innerWidth >= 768 ? 4 : 2; if (newCardsPerView !== crewCardsPerView) { crewCardsPerView = newCardsPerView; currentCrewIndex = 0; updateCrewSlider() } });
-
+    window.addEventListener('resize', () => {
+        crewCardsPerView = window.innerWidth >= 768 ? 4 : 1.2;
+        initDots();
         updateCrewSlider();
-    </script>
+    });
+
+    // Run on load
+    initDots();
+    updateCrewSlider();
+    // Re-run once images are fully loaded to adjust height
+    window.addEventListener('load', updateCrewSlider);
+</script>
 </body>
 
 </html>
