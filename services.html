@@ -389,42 +389,36 @@
     </section>
     <!-- Expert Crew Slider Section -->
     <section class="py-14 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Our <span class="gold-accent">Expert Crew</span></h2>
-                <p class="text-xl text-gray-600">Bengaluru's most reliable, uniformed, and trained event professionals
-                </p>
-            </div>
-
-            <div class="max-w-6xl mx-auto">
-                <div class="crew-slider-container">
-                    <button class="slider-btn prev" id="crewPrevBtn" aria-label="Previous"><i
-                            class="fas fa-chevron-left"></i></button>
-
-                    <div class="crew-slider-wrapper" id="crewSliderWrapper">
-                        <div class="crew-slide"><img src="assets/staffs/s1.jpeg" alt="Professional event crew"
-                                loading="lazy"></div>
-                        <div class="crew-slide"><img src="assets/staffs/s6.jpeg" alt="Catering staff in action"
-                                loading="lazy"></div>
-                        <div class="crew-slide"><img src="assets/staffs/s3.jpeg" alt="Hospitality professionals"
-                                loading="lazy"></div>
-                        <div class="crew-slide"><img src="assets/staffs/s4.jpeg" alt="Elite service team"
-                                loading="lazy"></div>
-                        <div class="crew-slide"><img src="assets/staffs/s5.jpeg" alt="Uniformed staff members"
-                                loading="lazy"></div>
-                        <div class="crew-slide"><img src="assets/staffs/s7.jpeg" alt="Event management crew"
-                                loading="lazy"></div>
-                        <div class="crew-slide"><img src="assets/staffs/s2.jpeg" alt="Trained professionals"
-                                loading="lazy"></div>
-                    </div>
-
-                    <button class="slider-btn next" id="crewNextBtn" aria-label="Next"><i
-                            class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="slider-dots" id="crewDots"></div>
-            </div>
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Our <span class="gold-accent">Expert Crew</span></h2>
+            <p class="text-xl text-gray-600">Bengaluru's most reliable, uniformed, and trained event professionals</p>
         </div>
-    </section>
+
+        <div class="max-w-6xl mx-auto overflow-hidden">
+            <div class="crew-slider-container relative">
+                <button class="slider-btn prev" id="crewPrevBtn" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="crew-slider-wrapper flex transition-transform duration-500 ease-out" id="crewSliderWrapper" style="gap: 24px; align-items: flex-start;">
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s1.jpeg" alt="Professional event crew" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s6.jpeg" alt="Catering staff in action" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s3.jpeg" alt="Hospitality professionals" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s4.jpeg" alt="Elite service team" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s5.jpeg" alt="Uniformed staff members" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s7.jpeg" alt="Event management crew" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
+                    <div class="crew-slide flex-shrink-0"><img src="assets/staffs/s2.jpeg" alt="Trained professionals" class="w-full h-auto rounded-xl shadow-md block" loading="lazy"></div>
+                </div>
+
+                <button class="slider-btn next" id="crewNextBtn" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="slider-dots mt-8 flex justify-center gap-2" id="crewDots"></div>
+        </div>
+    </div>
+</section>
     <section id="catering" class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">All 9 Service Categories</h2>
