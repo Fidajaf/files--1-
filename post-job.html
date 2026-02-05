@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Your Requirement - Zole Bengaluru</title>
+    <link rel="icon" type="image/png" href="assets/zole-fill.png">
+    <link rel="apple-touch-icon" href="assets/zole-fill.png">
+    <meta name="description"
+        content="Post your staffing requirements in 60 seconds. Get instant response from our team. Join our WhatsApp community for immediate assistance.">
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-banner {
+            background: linear-gradient(135deg, #2B59FF 0%, #1A36A0 100%);
+        }
+
+        .gold-accent {
+            color: #FFD700;
+        }
+
+        .gold-bg {
+            background-color: #FFD700;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .phone-btn {
+            background: linear-gradient(135deg, #2B59FF 0%, #1A36A0 100%);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-animation {
+            animation: scaleUp 0.5s ease;
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="assets/zole-fill.png" alt="Zole Bengaluru Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-black">Zole Bengaluru</div>
+                        <div class="text-xs text-gray-500">A Unit of Robinox Technologies</div>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Home</a>
+                    <a href="services.html"
+                        class="nav-link text-gray-700 font-semibold hover:text-blue-600">Services</a>
+                    <a href="post-job.html" class="nav-link text-blue-600 font-semibold">Post a Job</a>
+                    <a href="about.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">About Us</a>
+                    <a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t" target="_blank"
+                        class="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition flex items-center gap-2">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+                <a href="index.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">Home</a>
+                <a href="services.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">Services</a>
+                <a href="post-job.html" class="block text-blue-600 font-semibold py-2">Post a Job</a>
+                <a href="about.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">About Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="gradient-banner text-white pt-32 pb-20 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Post Your <span class="gold-accent">Staffing
+                    Requirement</span></h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">Fill in your details below. We'll respond
+                within minutes!</p>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div id="formContainer" class="bg-gray-50 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <form id="requirementForm">
+                    <div class="mb-6">
+                        <label class="block text-gray-800 font-bold mb-3 text-lg">Manager Name *</label>
+                        <input type="text" id="managerName" required
+                            class="w-full px-6 py-4 rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none text-lg"
+                            placeholder="Your full name">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-800 font-bold mb-3 text-lg">Phone Number *</label>
+                        <input type="tel" id="phoneNumber" required
+                            class="w-full px-6 py-4 rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none text-lg"
+                            placeholder="+91 9876543210">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-800 font-bold mb-3 text-lg">Business/Event Name *</label>
+                        <input type="text" id="businessName" required
+                            class="w-full px-6 py-4 rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none text-lg"
+                            placeholder="Restaurant name, event, or company">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-800 font-bold mb-3 text-lg">Job Category *</label>
+                        <select id="jobCategory" required
+                            class="w-full px-6 py-4 rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none text-lg">
+                            <option value="">Select a category</option>
+                            <option value="Catering/Serving Staff">Catering/Serving Staff</option>
+                            <option value="Promotion Staff">Promotion Staff</option>
+                            <option value="Warehouse Staff">Warehouse Staff</option>
+                            <option value="Pub/Bar Workers">Pub/Bar Workers</option>
+                            <option value="General Wage Staff">General Wage Staff</option>
+                            <option value="Event Staff">Event Staff</option>
+                            <option value="Kitchen Helpers">Kitchen Helpers</option>
+                            <option value="Housekeeping">Housekeeping</option>
+                            <option value="Security Personnel">Security Personnel</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-800 font-bold mb-3 text-lg">Staff Count *</label>
+                        <input type="number" id="staffCount" min="1" required
+                            class="w-full px-6 py-4 rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none text-lg"
+                            placeholder="How many people do you need?">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-800 font-bold mb-3 text-lg">Event Date *</label>
+                        <input type="date" id="eventDate" required
+                            class="w-full px-6 py-4 rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none text-lg">
+                    </div>
+
+                    <div class="mb-8">
+                        <label class="block text-gray-800 font-bold mb-3 text-lg">Location (Bengaluru) *</label>
+                        <input type="text" id="location" required
+                            class="w-full px-6 py-4 rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none text-lg"
+                            placeholder="e.g., Indiranagar, Koramangala, Whitefield">
+                    </div>
+
+                    <button type="submit"
+                        class="w-full gold-bg text-gray-900 py-5 rounded-xl font-bold text-xl hover:opacity-90 transition shadow-xl">
+                        Submit Requirement →
+                    </button>
+                </form>
+            </div>
+
+            <div id="successMessage"
+                class="hidden bg-white rounded-3xl p-8 md:p-12 shadow-2xl text-center success-animation">
+                <div class="text-7xl mb-6">✅</div>
+                <h2 class="text-4xl font-bold mb-4 text-blue-600">Thank You!</h2>
+                <p class="text-xl text-gray-700 mb-8">
+                    We've received your requirement and our team will contact you shortly.
+                </p>
+                <p class="text-lg text-gray-600 mb-8">
+                    For <strong>immediate assistance</strong>, join our WhatsApp community below:
+                </p>
+
+                <div class="space-y-4 max-w-md mx-auto">
+                    <a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t" target="_blank"
+                        class="block bg-green-500 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-green-600 transition shadow-lg">
+                        <i class="fab fa-whatsapp text-2xl mr-3"></i>
+                        Join Our WhatsApp Community
+                    </a>
+
+                    <a href="tel:+918848016825"
+                        class="block gradient-banner text-white px-8 py-5 rounded-xl font-bold text-lg hover:opacity-90 transition shadow-lg">
+                        <i class="fas fa-phone text-2xl mr-3"></i>
+                        Call Operations: +91 8848016825
+                    </a>
+
+                    <a href="index.html" class="block text-blue-600 hover:underline mt-4">
+                        ← Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-8">Why Choose Zole?</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Fast Response</h3>
+                    <p class="text-gray-600">We respond to all requests within 15 minutes during business hours</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                    <div class="text-4xl mb-4">✓</div>
+                    <h3 class="text-xl font-bold mb-2">Verified Staff</h3>
+                    <p class="text-gray-600">All workers are background-checked and trained</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold mb-2">Transparent Pricing</h3>
+                    <p class="text-gray-600">No hidden fees. What you see is what you pay</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="gradient-banner text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div
+                            class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden bg-white/10 p-1">
+                            <img src="assets/zole-logo.png" alt="Zole Bengaluru Logo"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-xl font-bold">Zole Bengaluru</h3>
+                    </div>
+                    <p class="text-blue-200">A Unit of Robinox Technologies LLP</p>
+                    <p class="text-blue-200 text-sm mt-2">Est. 2025</p>
+
+                    <div class="mt-6 space-y-3">
+                        <h5 class="font-semibold text-sm mb-3 text-yellow-300">Download Our App</h5>
+                        <div class="flex flex-col space-y-3">
+                            <a href="https://play.google.com/store/apps/details?id=com.robinoxx.zolee" target="_blank"
+                                rel="noopener" class="inline-block">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    alt="Get it on Google Play" width="120" height="40"
+                                    class="h-10 hover:opacity-80 transition">
+                            </a>
+                            <a href="https://apps.apple.com/in/app/zole-bengaluru/id6749810984" target="_blank"
+                                rel="noopener" class="inline-block">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                                    alt="Download on the App Store" width="120" height="40"
+                                    class="h-10 hover:opacity-80 transition">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-blue-200">
+                        <li><a href="index.html" class="hover:text-yellow-300 transition">Home</a></li>
+                        <li><a href="services.html" class="hover:text-yellow-300 transition">Services</a></li>
+                        <li><a href="about.html" class="hover:text-yellow-300 transition">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-blue-200">
+                        <li><a href="services.html" class="hover:text-yellow-300 transition">Catering</a></li>
+                        <li><a href="services.html" class="hover:text-yellow-300 transition">Warehouse Staff</a></li>
+                        <li><a href="services.html" class="hover:text-yellow-300 transition">Hospitality Staff</a></li>
+                        <li><a href="services.html" class="hover:text-yellow-300 transition">View All</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-3 text-blue-200">
+                        <li><a href="tel:+918848016825"
+                                class="hover:text-yellow-300 transition flex items-center gap-2">
+                                <i class="fas fa-phone"></i> Call Us
+                            </a></li>
+                        <li><a href="tel:+916238074364"
+                                class="hover:text-yellow-300 transition flex items-center gap-2">
+                                <i class="fas fa-phone"></i> Call Us
+                            </a></li>
+                        <li><a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t"
+                                class="hover:text-yellow-300 transition"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </li>
+                        <li><a href="https://www.instagram.com/zolebengaluru/?hl=en" target="_blank"
+                                class="hover:text-yellow-300 transition flex items-center gap-2">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a></li>
+                        <li><a href="mailto:robinoxzole2025@gmail.com"
+                                class="hover:text-yellow-300 transition flex items-center gap-2">
+                                <i class="fas fa-envelope"></i> Email Us
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-400 pt-8 text-center text-blue-200">
+                <p>© 2025 Zole Bengaluru. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-contact">
+        <a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t" target="_blank"
+            class="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+918848016825" class="floating-btn phone-btn" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <script>
+        (function () { emailjs.init("aYABtdsMWlSYYAuAf"); })();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceParam = urlParams.get('service');
+        const categoryParam = urlParams.get('category');
+
+        if (serviceParam) {
+            const categoryMap = {
+                'serving': 'Catering/Serving Staff',
+                'odc': 'General Wage Staff',
+                'combo': 'Event Staff'
+            };
+            document.getElementById('jobCategory').value = categoryMap[serviceParam] || '';
+        }
+
+        if (categoryParam) {
+            const categories = {
+                'serving': 'Catering/Serving Staff',
+                'promotion': 'Promotion Staff',
+                'warehouse': 'Warehouse Staff',
+                'bar': 'Pub/Bar Workers',
+                'general': 'General Wage Staff',
+                'event': 'Event Staff',
+                'kitchen': 'Kitchen Helpers',
+                'housekeeping': 'Housekeeping',
+                'security': 'Security Personnel'
+            };
+            document.getElementById('jobCategory').value = categories[categoryParam] || '';
+        }
+
+        document.getElementById('requirementForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = {
+                manager_name: document.getElementById('managerName').value,
+                phone_number: document.getElementById('phoneNumber').value,
+                business_name: document.getElementById('businessName').value,
+                job_category: document.getElementById('jobCategory').value,
+                staff_count: document.getElementById('staffCount').value,
+                event_date: document.getElementById('eventDate').value,
+                location: document.getElementById('location').value
+            };
+
+            emailjs.send('service_bpnv18f', 'template_i5a73x7', {
+                to_email: 'robinoxzole2025@gmail.com',
+                manager_name: formData.manager_name,
+                phone_number: formData.phone_number,
+                business_name: formData.business_name,
+                job_category: formData.job_category,
+                staff_count: formData.staff_count,
+                event_date: formData.event_date,
+                location: formData.location
+            })
+                .then(function (response) {
+                    document.getElementById('formContainer').classList.add('hidden');
+                    document.getElementById('successMessage').classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, function (error) {
+                    alert('There was an error. Please call us directly at +91 8848016825');
+                    console.error('EmailJS Error:', error);
+                });
+        });
+
+        document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

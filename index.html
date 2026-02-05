@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zole Bengaluru - Connecting Bengaluru to Smarter Job Opportunities</title>
+    <link rel="icon" type="image/png" href="assets/zole-fill.png">
+    <link rel="apple-touch-icon" href="assets/zole-fill.png">
+    <meta name="description"
+        content="Your trusted platform for verified part-time staff with transparent pricing. 100+ workers daily, 24/7 support, expert catering, warehouse, and event staffing in Bengaluru.">
+    <meta name="keywords"
+        content="Bengaluru staffing, part-time jobs Bengaluru, catering staff near me, warehouse workers Bengaluru, event staffing, manpower agency">
+
+    <!-- Local Business Schema for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Zole Bengaluru",
+      "description": "Professional manpower staffing solutions in Bengaluru",
+      "url": "https://zolebengaluru.com",
+      "telephone": "+91 9876543210",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "12.9716",
+        "longitude": "77.5946"
+      },
+      "openingHours": "Mo-Su 00:00-23:59",
+      "priceRange": "₹₹",
+      "areaServed": {
+        "@type": "City",
+        "name": "Bengaluru"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-banner {
+            background: linear-gradient(135deg, #2B59FF 0%, #1A36A0 100%);
+        }
+
+        .gold-accent {
+            color: #FFD700;
+        }
+
+        .gold-bg {
+            background-color: #FFD700;
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(43, 89, 255, 0.2);
+        }
+
+        .stat-card {
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .phone-btn {
+            background: linear-gradient(135deg, #2B59FF 0%, #1A36A0 100%);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse-gold {
+            animation: pulseGold 2s infinite;
+        }
+
+        @keyframes pulseGold {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+            }
+
+            50% {
+                box-shadow: 0 0 0 20px rgba(255, 215, 0, 0);
+            }
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #2B59FF 0%, #1A36A0 50%, #0F1F5C 100%);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<!-- App Download Banner -->
+<div class="gold-bg text-gray-900 py-2 text-center text-xs md:text-sm font-bold shadow-md">
+    <i class="fas fa-mobile-alt mr-2"></i>
+    Zole is now on Mobile!
+    <span class="hidden md:inline">Download for 1-click booking:</span>
+    <a href="https://play.google.com/store/apps/details?id=com.robinoxx.zolee" target="_blank" rel="noopener"
+        class="underline ml-2 hover:text-blue-800">Android</a> |
+    <a href="https://apps.apple.com/in/app/zole-bengaluru/id6749810984" target="_blank" rel="noopener"
+        class="underline hover:text-blue-800">iOS</a>
+</div>
+
+<!-- Navigation -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                    <img src="assets/zole-fill.png" alt="Zole Bengaluru Logo" width="48" height="48"
+                        class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-black">Zole Bengaluru</div>
+                    <div class="text-xs text-gray-500">A Unit of Robinox Technologies</div>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Home</a>
+                <a href="services.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Services</a>
+                <a href="post-job.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Post a Job</a>
+                <a href="about.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">About Us</a>
+                <a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t" target="_blank" rel="noopener"
+                    class="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition flex items-center gap-2">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                </a>
+            </div>
+
+            <button id="mobileMenuBtn" class="md:hidden text-gray-700" aria-label="Toggle menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+            <a href="index.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">Home</a>
+            <a href="services.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">Services</a>
+            <a href="post-job.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">Post a Job</a>
+            <a href="about.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">About Us</a>
+            <a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t" target="_blank" rel="noopener"
+                class="block bg-green-500 text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-green-600">
+                <i class="fab fa-whatsapp"></i> WhatsApp Us
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-gradient text-white pt-20 pb-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                Connecting Bengaluru to <span class="gold-accent">Smarter Job Opportunities</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-blue-100 font-light">
+                Your trusted platform for verified part-time staff with transparent pricing
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="post-job.html"
+                    class="gold-bg text-gray-900 px-10 py-5 rounded-full text-lg font-bold hover:opacity-90 transition pulse-gold shadow-2xl">
+                    Post Your Requirement
+                </a>
+                <a href="services.html"
+                    class="bg-white text-blue-600 px-10 py-5 rounded-full text-lg font-bold hover:bg-gray-100 transition shadow-2xl">
+                    View All Services
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Bar / Stats Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="stat-card text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg">
+                <div class="text-5xl font-bold text-blue-600 mb-3">100+</div>
+                <div class="text-xl font-semibold text-gray-700">Workers per Day</div>
+                <div class="text-gray-600 mt-2">Deployed across Bengaluru</div>
+            </div>
+
+            <div class="stat-card text-center p-8 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-lg">
+                <div class="text-5xl font-bold text-green-600 mb-3">24/7</div>
+                <div class="text-xl font-semibold text-gray-700">Support Available</div>
+                <div class="text-gray-600 mt-2">Always here when you need us</div>
+            </div>
+
+            <div class="stat-card text-center p-8 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl shadow-lg">
+                <div class="text-5xl font-bold gold-accent mb-3">100%</div>
+                <div class="text-xl font-semibold text-gray-700">Commitment</div>
+                <div class="text-gray-600 mt-2">Reliable, verified staff</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Highlights -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Core Services</h2>
+            <p class="text-xl text-gray-600">Professional staffing solutions for every need</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Catering -->
+            <div
+                class="service-card bg-white rounded-2xl p-8 shadow-lg text-center border-2 border-transparent hover:border-blue-500">
+                <div
+                    class="w-20 h-20 mx-auto mb-6 gradient-banner rounded-full flex items-center justify-center text-white text-3xl">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Catering Staff</h3>
+                <p class="text-gray-600 mb-4">Food factory specialists, servers, and kitchen helpers</p>
+                <div class="text-3xl font-bold text-blue-600 mb-4">
+                    From ₹90/hr
+                </div>
+                <a href="services.html#catering"
+                    class="inline-block gold-bg text-gray-900 px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">
+                    Learn More
+                </a>
+            </div>
+
+            <!-- Logistics -->
+            <div
+                class="service-card bg-white rounded-2xl p-8 shadow-lg text-center border-2 border-transparent hover:border-blue-500">
+                <div
+                    class="w-20 h-20 mx-auto mb-6 gradient-banner rounded-full flex items-center justify-center text-white text-3xl">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Logistics & Warehouse</h3>
+                <p class="text-gray-600 mb-4">Warehouse staff, packers, and loading experts</p>
+                <div class="text-3xl font-bold text-blue-600 mb-4">
+                    From ₹90/hr
+                </div>
+                <a href="services.html#logistics"
+                    class="inline-block gold-bg text-gray-900 px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">
+                    Learn More
+                </a>
+            </div>
+
+            <!-- Pubs/Bars -->
+            <div
+                class="service-card bg-white rounded-2xl p-8 shadow-lg text-center border-2 border-transparent hover:border-blue-500">
+                <div
+                    class="w-20 h-20 mx-auto mb-6 gradient-banner rounded-full flex items-center justify-center text-white text-3xl">
+                    <i class="fas fa-glass-cheers"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Pubs & Bars</h3>
+                <p class="text-gray-600 mb-4">Hospitality experts, bartenders, and servers</p>
+                <div class="text-3xl font-bold text-blue-600 mb-4">
+                    From ₹100/hr
+                </div>
+                <a href="services.html#hospitality"
+                    class="inline-block gold-bg text-gray-900 px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">
+                    Learn More
+                </a>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="services.html"
+                class="inline-block gradient-banner text-white px-10 py-5 rounded-full text-lg font-bold hover:opacity-90 transition shadow-xl">
+                View All 9 Services →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Success Stories Preview -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Trusted by <span class="gold-accent">Industry
+                    Leaders</span></h2>
+            <p class="text-xl text-gray-600">Real results from real clients</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-lg">
+                <div class="text-4xl mb-4">🏭</div>
+                <h3 class="text-2xl font-bold mb-3">GRS Food Factory</h3>
+                <p class="text-gray-600 mb-4">100+ workers managed daily for 44+ consecutive days</p>
+                <a href="about.html#success-stories" class="text-blue-600 font-semibold hover:underline">Read Case
+                    Study →</a>
+            </div>
+
+            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-lg">
+                <div class="text-4xl mb-4">🛒</div>
+                <h3 class="text-2xl font-bold mb-3">BigBasket Logistics</h3>
+                <p class="text-gray-600 mb-4">5,000+ board works across 7 major Bengaluru hubs within 6 hours.</p>
+                <a href="about.html#success-stories" class="text-blue-600 font-semibold hover:underline">Read Case
+                    Study →</a>
+            </div>
+
+            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-lg">
+                <div class="text-4xl mb-4">🎪</div>
+                <h3 class="text-2xl font-bold mb-3">BIEC Events</h3>
+                <p class="text-gray-600 mb-4">Major event support in Madavara, Bengaluru</p>
+                <a href="about.html#success-stories" class="text-blue-600 font-semibold hover:underline">Read Case
+                    Study →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="gradient-banner py-20">
+    <div class="container mx-auto px-4 text-center text-white">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Build Your Team?</h2>
+        <p class="text-xl mb-10 text-blue-100">Post your requirement in 60 seconds. We'll handle the rest.</p>
+        <a href="post-job.html"
+            class="gold-bg text-gray-900 px-12 py-6 rounded-full text-xl font-bold hover:opacity-90 transition inline-block shadow-2xl pulse-gold">
+            Post Your Requirement Now
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="gradient-banner text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden bg-white/10 p-1">
+                        <img src="assets/zole-logo.png" alt="Zole Bengaluru Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-xl font-bold">Zole Bengaluru</h3>
+                </div>
+                <p class="text-blue-200">A Unit of Robinox Technologies LLP</p>
+                <p class="text-blue-200 text-sm mt-2">Est. 2025</p>
+
+                <div class="mt-6 space-y-3">
+                    <h5 class="font-semibold text-sm mb-3 text-yellow-300">Download Our App</h5>
+                    <div class="flex flex-col space-y-3">
+                        <a href="https://play.google.com/store/apps/details?id=com.robinoxx.zolee" target="_blank"
+                            rel="noopener" class="inline-block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                alt="Get it on Google Play" width="120" height="40"
+                                class="h-10 hover:opacity-80 transition">
+                        </a>
+                        <a href="https://apps.apple.com/in/app/zole-bengaluru/id6749810984" target="_blank"
+                            rel="noopener" class="inline-block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                                alt="Download on the App Store" width="120" height="40"
+                                class="h-10 hover:opacity-80 transition">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-blue-200">
+                    <li><a href="services.html" class="hover:text-yellow-300 transition">Services</a></li>
+                    <li><a href="post-job.html" class="hover:text-yellow-300 transition">Post a Job</a></li>
+                    <li><a href="about.html" class="hover:text-yellow-300 transition">About Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-4">Services</h4>
+                <ul class="space-y-2 text-blue-200">
+                    <li><a href="services.html#catering" class="hover:text-yellow-300 transition">Catering Staff</a>
+                    </li>
+                    <li><a href="services.html#logistics" class="hover:text-yellow-300 transition">Warehouse
+                            Staff</a></li>
+                    <li><a href="services.html#hospitality" class="hover:text-yellow-300 transition">Hospitality
+                            Staff</a></li>
+                    <li><a href="services.html" class="hover:text-yellow-300 transition">View All</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Contact</h4>
+                <ul class="space-y-3 text-blue-200">
+                    <li><a href="tel:+918848016825" class="hover:text-yellow-300 transition flex items-center gap-2">
+                            <i class="fas fa-phone"></i> Call Us
+                        </a></li>
+                    <li><a href="tel:+916238074364" class="hover:text-yellow-300 transition flex items-center gap-2">
+                            <i class="fas fa-phone"></i> Call Us
+                        </a></li>
+                    <li><a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t"
+                            class="hover:text-yellow-300 transition flex items-center gap-2">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a></li>
+                    <li><a href="https://www.instagram.com/zolebengaluru/?hl=en" target="_blank"
+                            class="hover:text-yellow-300 transition flex items-center gap-2">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a></li>
+                    <li><a href="mailto:robinoxzole2025@gmail.com"
+                            class="hover:text-yellow-300 transition flex items-center gap-2">
+                            <i class="fas fa-envelope"></i> Email Us
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-blue-400 pt-8 text-center text-blue-200">
+            <p>© 2025 Zole Bengaluru. All rights reserved. | A Unit of Robinox Technologies LLP</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating Contact Buttons -->
+<div class="floating-contact">
+    <a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t" target="_blank"
+        class="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+918848016825" class="floating-btn phone-btn" title="Call Now">
+        <i class="fas fa-phone"></i>
+    </a>
+</div>
+
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

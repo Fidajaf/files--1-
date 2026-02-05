@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Pricing - Zole Bengaluru</title>
+    <link rel="icon" type="image/png" href="assets/zole-fill.png">
+    <link rel="apple-touch-icon" href="assets/zole-fill.png">
+    <meta name="description"
+        content="Transparent pricing for catering staff (₹90/hr), ODC staff (₹100/hr), and combo staff (₹130/hr). All rates include uniforms, training, and 24/7 coordination.">
+
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-banner {
+            background: linear-gradient(135deg, #2B59FF 0%, #1A36A0 100%);
+        }
+
+        .gold-accent {
+            color: #FFD700;
+        }
+
+        .gold-bg {
+            background-color: #FFD700;
+        }
+
+        .service-detail-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .service-detail-card:hover {
+            border-left-color: #2B59FF;
+            transform: translateX(8px);
+        }
+
+        .pricing-card {
+            transition: all 0.4s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .phone-btn {
+            background: linear-gradient(135deg, #2B59FF 0%, #1A36A0 100%);
+
+        }
+
+        /* Expert Crew Slider */
+        .crew-slider-container {
+            position: relative;
+            overflow: hidden;
+            padding: 0 60px
+        }
+
+        .crew-slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 1.5rem
+        }
+
+        .crew-slide {
+            min-width: calc(25% - 1.125rem);
+            flex-shrink: 0
+        }
+
+        .crew-slide img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 1rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15)
+        }
+
+        .crew-slide img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(43, 89, 255, 0.3)
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid #2B59FF;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: #2B59FF
+        }
+
+        .slider-btn:hover {
+            background: #2B59FF;
+            color: white;
+            transform: translateY(-50%) scale(1.1)
+        }
+
+        .slider-btn.prev {
+            left: 0
+        }
+
+        .slider-btn.next {
+            right: 0
+        }
+
+        .slider-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #D1D5DB;
+            cursor: pointer;
+            transition: all 0.3s ease
+        }
+
+        .dot.active {
+            background: #2B59FF;
+            width: 30px;
+            border-radius: 6px
+        }
+
+        @media (max-width:768px) {
+            .crew-slide {
+                min-width: calc(50% - 0.75rem)
+            }
+
+            .crew-slider-container {
+                padding: 0 50px
+            }
+
+            .slider-btn {
+                width: 40px;
+                height: 40px
+            }
+
+            .crew-slide img {
+                height: 200px
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation (Same as homepage) -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="assets/zole-fill.png" alt="Zole Bengaluru Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-black">Zole Bengaluru</div>
+                        <div class="text-xs text-gray-500">A Unit of Robinox Technologies</div>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Home</a>
+                    <a href="services.html" class="nav-link text-blue-600 font-semibold">Services</a>
+                    <a href="post-job.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Post a
+                        Job</a>
+                    <a href="about.html" class="nav-link text-gray-700 font-semibold hover:text-blue-600">About Us</a>
+                    <a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t" target="_blank"
+                        class="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition flex items-center gap-2">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+                <a href="index.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">Home</a>
+                <a href="services.html" class="block text-blue-600 font-semibold py-2">Services</a>
+                <a href="post-job.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">Post a
+                    Job</a>
+                <a href="about.html" class="block text-gray-700 font-semibold hover:text-blue-600 py-2">About Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="gradient-banner text-white pt-32 pb-20 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Our Services & <span class="gold-accent">Transparent
+                    Pricing</span></h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+                Professional staffing solutions with clear, upfront rates. No hidden fees.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Our Pricing Plans</h2>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+                <!-- Serving Staff -->
+                <div
+                    class="pricing-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 shadow-xl border-2 border-blue-200 relative">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4">👔</div>
+                        <h3 class="text-3xl font-bold mb-2">Serving Staff</h3>
+                        <div class="text-5xl font-extrabold text-blue-600 my-6">
+                            ₹90<span class="text-2xl">/hr</span>
+                        </div>
+                        <ul class="text-left space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>Uniformed professionals</strong> with proper grooming standards</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>Real-time attendance tracking</strong> for transparency</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>Food service trained</strong> with hygiene certification</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span>Perfect for catering, banquets, events</span>
+                            </li>
+                        </ul>
+                        <a href="post-job.html?service=serving"
+                            class="block gold-bg text-gray-900 py-4 rounded-full font-bold text-lg hover:opacity-90 transition">
+                            Book This Staff
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ODC Staff -->
+                <div
+                    class="pricing-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 shadow-xl border-2 border-purple-200">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4">🏗️</div>
+                        <h3 class="text-3xl font-bold mb-2">ODC Staff</h3>
+                        <div class="text-5xl font-extrabold text-purple-600 my-6">
+                            ₹100<span class="text-2xl">/hr</span>
+                        </div>
+                        <ul class="text-left space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>Outdoor experts</strong> with fieldwork experience</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>Industry trained</strong> for specialized tasks</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>Safety certified</strong> with proper equipment knowledge</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span>Ideal for construction, logistics, outdoor events</span>
+                            </li>
+                        </ul>
+                        <a href="post-job.html?service=odc"
+                            class="block gold-bg text-gray-900 py-4 rounded-full font-bold text-lg hover:opacity-90 transition">
+                            Book This Staff
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Combo Staff (POPULAR) -->
+                <div
+                    class="pricing-card bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-3xl p-8 shadow-xl border-4 border-yellow-300 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="gold-bg text-gray-900 px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                            ⭐ MOST POPULAR
+                        </span>
+                    </div>
+                    <div class="text-center mt-4">
+                        <div class="text-5xl mb-4">💎</div>
+                        <h3 class="text-3xl font-bold mb-2">Combo Staff</h3>
+                        <div class="text-5xl font-extrabold gold-accent my-6">
+                            ₹130<span class="text-2xl">/hr</span>
+                        </div>
+                        <ul class="text-left space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>Dual-skilled workers</strong> for multiple roles</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>24/7 coordination</strong> with dedicated manager</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span><strong>Premium support</strong> with priority response</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span>Best for large events, factories, complex projects</span>
+                            </li>
+                        </ul>
+                        <a href="post-job.html?service=combo"
+                            class="block gradient-banner text-white py-4 rounded-full font-bold text-lg hover:opacity-90 transition shadow-lg">
+                            Book This Staff
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Expert Crew Slider Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Our <span class="gold-accent">Expert Crew</span></h2>
+                <p class="text-xl text-gray-600">Bengaluru's most reliable, uniformed, and trained event professionals
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="crew-slider-container">
+                    <button class="slider-btn prev" id="crewPrevBtn" aria-label="Previous"><i
+                            class="fas fa-chevron-left"></i></button>
+
+                    <div class="crew-slider-wrapper" id="crewSliderWrapper">
+                        <div class="crew-slide"><img src="assets/staffs/s1.jpeg" alt="Professional event crew"
+                                loading="lazy"></div>
+                        <div class="crew-slide"><img src="assets/staffs/s6.jpeg" alt="Catering staff in action"
+                                loading="lazy"></div>
+                        <div class="crew-slide"><img src="assets/staffs/s3.jpeg" alt="Hospitality professionals"
+                                loading="lazy"></div>
+                        <div class="crew-slide"><img src="assets/staffs/s4.jpeg" alt="Elite service team"
+                                loading="lazy"></div>
+                        <div class="crew-slide"><img src="assets/staffs/s5.jpeg" alt="Uniformed staff members"
+                                loading="lazy"></div>
+                        <div class="crew-slide"><img src="assets/staffs/s7.jpeg" alt="Event management crew"
+                                loading="lazy"></div>
+                        <div class="crew-slide"><img src="assets/staffs/s2.jpeg" alt="Trained professionals"
+                                loading="lazy"></div>
+                    </div>
+
+                    <button class="slider-btn next" id="crewNextBtn" aria-label="Next"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="slider-dots" id="crewDots"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Detailed Service Categories -->
+    <section id="catering" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">All 9 Service Categories</h2>
+
+            <div class="max-w-5xl mx-auto space-y-6">
+                <!-- 1. Serving Staff -->
+                <div class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">1. Serving Staff (Catering)</h3>
+                            <p class="text-gray-600 mb-4">
+                                Professional food service staff including servers, waiters, and kitchen helpers. All
+                                personnel are uniformed, well-groomed, and trained in hygiene standards. Perfect for
+                                restaurants, catering events, banquets, and food factories.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">₹90/hr</span>
+                                <a href="post-job.html?category=serving"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Promotion Staff -->
+                <div class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">2. Promotion Staff</h3>
+                            <p class="text-gray-600 mb-4">
+                                Brand ambassadors, product demonstrators, and promotional event staff. Trained in
+                                customer engagement, product knowledge presentation, and brand representation. Ideal for
+                                product launches, retail promotions, and marketing events.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">₹90-100/hr</span>
+                                <a href="post-job.html?category=promotion"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Warehouse Staff -->
+                <div id="logistics" class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">3. Warehouse Staff</h3>
+                            <p class="text-gray-600 mb-4">
+                                Warehouse helpers, inventory managers, packers, and loaders. Experienced in material
+                                handling, inventory organization, and logistics coordination. Safety-trained for
+                                warehouse operations.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">₹90-100/hr</span>
+                                <a href="post-job.html?category=warehouse"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Pub/Bar Workers -->
+                <div id="hospitality" class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">4. Pub/Bar Workers</h3>
+                            <p class="text-gray-600 mb-4">
+                                Bartenders, servers, and hospitality staff for pubs, bars, and nightlife venues. Trained
+                                in beverage service, customer interaction, and maintaining bar standards. Professional
+                                and courteous service guaranteed.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-semibold">₹100-130/hr</span>
+                                <a href="post-job.html?category=bar"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. General Wage Staff -->
+                <div class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">5. General Wage Staff</h3>
+                            <p class="text-gray-600 mb-4">
+                                Multi-purpose workers for general labor, housekeeping, maintenance, and support roles.
+                                Flexible staffing for various industries including retail, manufacturing, and facilities
+                                management.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">₹90/hr</span>
+                                <a href="post-job.html?category=general"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Event Staff -->
+                <div class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">6. Event Staff</h3>
+                            <p class="text-gray-600 mb-4">
+                                Specialized event management staff including coordinators, ushers, registration desk
+                                personnel, and crowd management. Perfect for conferences, weddings, corporate events,
+                                and exhibitions.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">₹100-130/hr</span>
+                                <a href="post-job.html?category=event"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Kitchen Helpers -->
+                <div class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">7. Kitchen Helpers</h3>
+                            <p class="text-gray-600 mb-4">
+                                Food preparation assistants, dishwashers, and kitchen support staff. Trained in kitchen
+                                hygiene, food safety, and equipment handling. Essential for restaurants, cloud kitchens,
+                                and food production facilities.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">₹90/hr</span>
+                                <a href="post-job.html?category=kitchen"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Housekeeping Staff -->
+                <div class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">8. Housekeeping Staff</h3>
+                            <p class="text-gray-600 mb-4">
+                                Professional cleaning staff for offices, hotels, hospitals, and residential complexes.
+                                Trained in sanitation protocols, eco-friendly cleaning methods, and facility maintenance
+                                standards.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">₹90/hr</span>
+                                <a href="post-job.html?category=housekeeping"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Security Personnel -->
+                <div class="service-detail-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 gradient-banner rounded-xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">9. Security Personnel</h3>
+                            <p class="text-gray-600 mb-4">
+                                Trained security guards for events, facilities, and construction sites.
+                                Background-verified personnel with experience in access control, surveillance, and
+                                emergency response protocols.
+                            </p>
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <span
+                                    class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-semibold">₹100-130/hr</span>
+                                <a href="post-job.html?category=security"
+                                    class="gold-bg text-gray-900 px-6 py-2 rounded-full font-semibold hover:opacity-90 transition">
+                                    Book Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gradient-banner py-20">
+        <div class="container mx-auto px-4 text-center text-white">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Staff Your Business?</h2>
+            <p class="text-xl mb-10 text-blue-100 max-w-2xl mx-auto">Tell us your requirements and we'll provide the
+                perfect team within hours.</p>
+            <a href="post-job.html"
+                class="gold-bg text-gray-900 px-12 py-6 rounded-full text-xl font-bold hover:opacity-90 transition inline-block shadow-2xl">
+                Post Your Requirement Now
+            </a>
+        </div>
+    </section>
+    <footer class="gradient-banner text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div
+                            class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden bg-white/10 p-1">
+                            <img src="assets/zole-logo.png" alt="Zole Bengaluru Logo"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-xl font-bold">Zole Bengaluru</h3>
+                    </div>
+                    <p class="text-blue-200">A Unit of Robinox Technologies LLP</p>
+                    <p class="text-blue-200 text-sm mt-2">Est. 2025</p>
+
+                    <div class="mt-6 space-y-3">
+                        <h5 class="font-semibold text-sm mb-3 text-yellow-300">Download Our App</h5>
+                        <div class="flex flex-col space-y-3">
+                            <a href="https://play.google.com/store/apps/details?id=com.robinoxx.zolee" target="_blank"
+                                rel="noopener" class="inline-block">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    alt="Get it on Google Play" width="120" height="40"
+                                    class="h-10 hover:opacity-80 transition">
+                            </a>
+                            <a href="https://apps.apple.com/in/app/zole-bengaluru/id6749810984" target="_blank"
+                                rel="noopener" class="inline-block">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                                    alt="Download on the App Store" width="120" height="40"
+                                    class="h-10 hover:opacity-80 transition">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-blue-200">
+                        <li><a href="index.html" class="hover:text-yellow-300 transition">Home</a></li>
+                        <li><a href="services.html" class="hover:text-yellow-300 transition">Services</a></li>
+                        <li><a href="post-job.html" class="hover:text-yellow-300 transition">Post a Job</a></li>
+                        <li><a href="about.html" class="hover:text-yellow-300 transition">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-blue-200">
+                        <li><a href="#catering" class="hover:text-yellow-300 transition">Catering Staff</a></li>
+                        <li><a href="#logistics" class="hover:text-yellow-300 transition">Warehouse Staff</a></li>
+                        <li><a href="#hospitality" class="hover:text-yellow-300 transition">Hospitality Staff</a></li>
+                        <li><a href="services.html" class="hover:text-yellow-300 transition">View All</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-3 text-blue-200">
+                        <li><a href="tel:+918848016825"
+                                class="hover:text-yellow-300 transition flex items-center gap-2">
+                                <i class="fas fa-phone"></i> Call Us
+                            </a></li>
+                        <li><a href="tel:+916238074364"
+                                class="hover:text-yellow-300 transition flex items-center gap-2">
+                                <i class="fas fa-phone"></i> Call Us
+                            </a></li>
+                        <li><a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t"
+                                class="hover:text-yellow-300 transition flex items-center gap-2"><i
+                                    class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://www.instagram.com/zolebengaluru/?hl=en" target="_blank"
+                                class="hover:text-yellow-300 transition flex items-center gap-2">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a></li>
+                        <li><a href="mailto:robinoxzole2025@gmail.com"
+                                class="hover:text-yellow-300 transition flex items-center gap-2"><i
+                                    class="fas fa-envelope"></i> Email Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-400 pt-8 text-center text-blue-200">
+                <p>© 2025 Zole Bengaluru. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact -->
+    <div class="floating-contact">
+        <a href="https://chat.whatsapp.com/EY5oWoQF7sjFcddsrAXp4f?mode=gi_t" target="_blank"
+            class="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+918848016825" class="floating-btn phone-btn" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        const crewSlider = document.getElementById('crewSliderWrapper'), crewPrev = document.getElementById('crewPrevBtn'), crewNext = document.getElementById('crewNextBtn'), crewDotsContainer = document.getElementById('crewDots'), crewCards = document.querySelectorAll('.crew-slide'), totalCrewCards = crewCards.length;
+        let crewCardsPerView = window.innerWidth >= 768 ? 4 : 2, currentCrewIndex = 0, maxCrewIndex = Math.max(0, totalCrewCards - crewCardsPerView);
+
+        for (let i = 0; i <= maxCrewIndex; i++) { const dot = document.createElement('div'); dot.classList.add('dot'); if (i === 0) dot.classList.add('active'); dot.addEventListener('click', () => goToCrewSlide(i)); crewDotsContainer.appendChild(dot) }
+        const crewDots = document.querySelectorAll('#crewDots .dot');
+
+        function updateCrewSlider() { const cardWidth = crewCards[0].offsetWidth, gap = 24, offset = -(currentCrewIndex * (cardWidth + gap)); crewSlider.style.transform = `translateX(${offset}px)`; crewDots.forEach((dot, index) => { dot.classList.toggle('active', index === currentCrewIndex) }); crewPrev.disabled = currentCrewIndex === 0; crewNext.disabled = currentCrewIndex >= maxCrewIndex }
+
+        function goToCrewSlide(index) { currentCrewIndex = Math.max(0, Math.min(index, maxCrewIndex)); updateCrewSlider() }
+
+        crewPrev.addEventListener('click', () => { if (currentCrewIndex > 0) { currentCrewIndex--; updateCrewSlider() } });
+        crewNext.addEventListener('click', () => { if (currentCrewIndex < maxCrewIndex) { currentCrewIndex++; updateCrewSlider() } });
+
+        let crewAutoPlay = setInterval(() => { if (currentCrewIndex < maxCrewIndex) { currentCrewIndex++ } else { currentCrewIndex = 0 } updateCrewSlider() }, 3000);
+
+        crewSlider.addEventListener('mouseenter', () => { clearInterval(crewAutoPlay) });
+        crewSlider.addEventListener('mouseleave', () => { crewAutoPlay = setInterval(() => { if (currentCrewIndex < maxCrewIndex) { currentCrewIndex++ } else { currentCrewIndex = 0 } updateCrewSlider() }, 3000) });
+
+        window.addEventListener('resize', () => { const newCardsPerView = window.innerWidth >= 768 ? 4 : 2; if (newCardsPerView !== crewCardsPerView) { crewCardsPerView = newCardsPerView; currentCrewIndex = 0; updateCrewSlider() } });
+
+        updateCrewSlider();
+    </script>
+</body>
+
+</html>
